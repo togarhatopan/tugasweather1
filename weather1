@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title> Web Wundeground </title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <div id="box">
+      <div id="header" >
+     
+      </div>
+      <div id="container">
+
+        <div id="kiri">
+<marquee bgcolor=black; style="color: red;font-family: TImes New Roman; font-size:50px;">Kondisi Cuaca Pada KOTA di Sekitar Kota YOGYAKARTA</marquee>
+
+
+<form class="form-inline">Tulis kota:
+    <input type="text" class="form-control" size="50" placeholder="Tulis Disini">
+    <button type="button" class="btn btn-danger">Cari</button>
+    </form>
+<select size="2">
+    <option>Temperature<span id="temp"><span></option>
+    <option>Pilihan 2</option>
+    <option>Pilihan 3</option>
+    <option>Pilihan 4</option>
+    <option>Pilihan 5</option>
+</select>
+   
+    <p>Temperature: <span id="temp"><span><p>
+    <p>Wind Speed: <span id="wind"><span><p>
+    <p>Weather: <span id="wather"><span><p>
+
+<script>
+var weather = new XMLHttpRequest();
+weather.open("GET","http://api.wunderground.com/api/dc6a2e8247981d34/conditions/q/CA/kalicari.json", false);
+weather.send(null);
+
+var r = JSON.parse(weather.response);
+var weather = "Current location: "+ r.current_observation.display_location.full + "<br />";
+var temp = r.current_observation.temperature_string + "<br />";
+var wind = r.current_observation.wind_string + "<br />";
+
+document.getElementById("weather").innerHTML = weather;
+document.getElementById("temp").innerHTML = temp;
+document.getElementById("wind").innerHTML = wind;
+
+
+</script>
+
+
+   
+            </div>
+        <div class="clear"></div>
+      </div>
+      <div id="footer">
+        <div id="copyright">
+        <b style="font-family:Baskerville Old Face; font-size:20px;">--->>>---Nama  : TOGAR HATOPAN<--->NIM  : 15.01.53.0153---  : Web Service---<<<---</b></div>
+        <div id="copyright">Copyright@2016 by TOPAN</div>
+      </div>
+    </div>
+</body>
+</html>
