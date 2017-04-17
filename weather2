@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Weather App</title>
+</head>
+<body>
+    <div id ="weather"></div>
+    <p>Temperature: <span id="temp"><span><p>
+    <p>Wins Speed: <span id="wind"><span><p>
+
+<script>
+var weather = new XMLHttpRequest();
+weather.open("GET","http://api.wunderground.com/api/dc6a2e8247981d34/conditions/q/CA/kalicari.json", false);
+weather.send(null);
+
+var r = JSON.parse(weather.response);
+var weather = "Current location: "+ r.current_observation.display_location.full + "<br />";
+var temp = r.current_observation.temperature_string + "<br />";
+var wind = r.current_observation.wind_string + "<br />";
+
+document.getElementById("weather").innerHTML = weather;
+document.getElementById("temp").innerHTML = temp;
+document.getElementById("wind").innerHTML = wind;
+
+</script>
+</body>
+</html>
